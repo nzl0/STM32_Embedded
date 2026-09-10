@@ -23,6 +23,7 @@ Neden "int" yerine "uint32_t" kullanılır?
 Çünkü "int"in kapasitesi sistem/platforma bağlıdır. Bu nedenle, int kullanmak güvenilir değildir. Ancak, uint32_t kullanılırsa bu kapasite miktarı değişmez. 32 bit olarak sabittir.
 
 KNOW HOW
+
 Butona(PA0) basılıp basılmadığını anlamak için while() içerisinde  if(*GPIOA_IDR & (1<<0)) kodu kullanıldı. if(*GPIOA_IDR==1) gibi bir değer kullanılmamasının sebebi GPIOA_IDR register'ının tek bir bit değil, 32 bitlik bir register olmasından kaynaklanır. Eğer PA0 yanıyorsa 32-bitlik register'ın değeri 1 olacaktır fakat aynı anda PA5'e de basılırsa bu durumda GPIOA_IDR register'ının toplam değeri değişir ve 1'den farklı bir hal alır (33 olur). == kullanma durumunda PA0 basılı olmasına rağmen kod bloğu false döner. Bu yüzden sadece istenen bloğun basılı olup olmadığını anlamak için & (1<<0) kullanılır.
 
 
